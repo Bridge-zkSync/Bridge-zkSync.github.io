@@ -1,0 +1,107 @@
+{
+ "keyword": "bridge zksync",
+ "h1": "Bridge zkSync",
+ "brand": "ZKsync Portal",
+ "niche": "bridge",
+ "verb": "Bridge",
+ "title": "bridge zksync - Open App",
+ "meta_description": "bridge zksync opens the official ZKsync Portal to move ETH and supported tokens between Ethereum and ZKsync Era.",
+ "palette": {
+  "mode": "light",
+  "bg": "#F5F8FF",
+  "accent": "#0B2E84",
+  "ink": "#080B12"
+ },
+ "hero_h2": "Move assets between Ethereum and Era",
+ "hero_lead": "bridge zksync gives users a direct path to the ZKsync Portal for moving ETH and supported tokens between Ethereum and ZKsync Era while reviewing live wallet prompts before signing.",
+ "badge": "Layer 2",
+ "widget": {
+  "from": "ETH",
+  "from_net": "Ethereum",
+  "to": "ETH",
+  "to_net": "ZKsync Era",
+  "action": "Open ZKsync Portal"
+ },
+ "trust": [
+  "Official Portal route",
+  "Ethereum Layer 2",
+  "Validity-proof rollup"
+ ],
+ "what_is": "ZKsync Portal is the official app destination for deposits and withdrawals between Ethereum and ZKsync Era. ZKsync Era is a Layer 2 ZK rollup built with the ZK Stack and secured by validity proofs submitted to Ethereum; see <a href='https://docs.zksync.io/zksync-network/zksync-era'>ZKsync Era docs</a>.",
+ "how": [
+  {
+   "t": "Connect wallet",
+   "d": "Open the portal and connect a wallet that supports Ethereum and ZKsync Era."
+  },
+  {
+   "t": "Select route",
+   "d": "Choose the source and destination networks, then select ETH or another supported token shown in the app."
+  },
+  {
+   "t": "Review details",
+   "d": "Check the recipient, network, amount, and wallet-estimated fees before approving."
+  },
+  {
+   "t": "Sign and track",
+   "d": "Submit the transaction and use the portal or explorer to follow status."
+  }
+ ],
+ "points": [
+  {
+   "h": "Official app path",
+   "p": "Primary action opens portal.zksync.io, keeping the landing page focused on routing users to the real transaction flow."
+  },
+  {
+   "h": "ZK rollup context",
+   "p": "Era executes transactions off-chain and posts validity proofs to Ethereum, according to the official documentation."
+  },
+  {
+   "h": "Explorer checks",
+   "p": "Completed transactions can be inspected on the <a href='https://explorer.zksync.io/'>ZKsync Era explorer</a>."
+  }
+ ],
+ "eeat": [
+  {
+   "text": "ZKsync Portal",
+   "url": "https://portal.zksync.io/bridge/"
+  },
+  {
+   "text": "ZKsync Era documentation",
+   "url": "https://docs.zksync.io/zksync-network/zksync-era"
+  },
+  {
+   "text": "ZKsync Era explorer",
+   "url": "https://explorer.zksync.io/"
+  }
+ ],
+ "faq": [
+  {
+   "q": "What is bridge zksync?",
+   "a": "It is an app-first landing path for users who want to move assets between Ethereum and ZKsync Era, with the action sent to the official <a href='https://portal.zksync.io/bridge/'>ZKsync Portal</a>.",
+   "open": true
+  },
+  {
+   "q": "Is this the official ZKsync bridge app?",
+   "a": "No. This landing page is separate from the official app; use portal.zksync.io for the transaction flow and verify the domain before signing.",
+   "open": false
+  },
+  {
+   "q": "Which assets can I move to ZKsync Era?",
+   "a": "The live portal shows supported assets and routes. ETH is commonly used for funding, but token availability should always be confirmed in the app.",
+   "open": false
+  },
+  {
+   "q": "How long do ZKsync withdrawals take?",
+   "a": "Timing can vary by route, wallet, and network conditions; use the app's live status and the explorer for the current transaction record.",
+   "open": false
+  },
+  {
+   "q": "What should I verify before using a ZKsync bridge?",
+   "a": "Confirm the domain, wallet network, destination address, token, amount, and wallet prompt details. Treat copied links and search ads carefully.",
+   "open": false
+  }
+ ],
+ "official_url": "https://portal.zksync.io/bridge/",
+ "official_domain": "portal.zksync.io",
+ "footer_note": "Not the official app; verify portal.zksync.io before signing. Educational content only, not financial advice."
+}
