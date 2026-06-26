@@ -3,122 +3,424 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bridge zkSync</title>
-  <meta name="description" content="Bridge zkSync moves ETH and tokens between Ethereum and the zkSync Era L2 from your own wallet.">
+  <title>Bridge zkSync - Decentralized DeFi Portal</title>
+  <meta name="description" content="Secure, non-custodial portal for Bridge zkSync DeFi operations directly from your own wallet.">
   <link rel="canonical" href="https://bridge-zksync.github.io/">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="theme-color" content="#F6F7FA">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Bridge zkSync">
-  <meta property="og:description" content="Bridge zkSync moves ETH and tokens between Ethereum and the zkSync Era L2 from your own wallet.">
-  <meta property="og:url" content="https://bridge-zksync.github.io/">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Bridge zkSync">
-  <meta name="twitter:description" content="Bridge zkSync moves ETH and tokens between Ethereum and the zkSync Era L2 from your own wallet.">
+  <meta name="robots" content="index,follow">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://bridge-zksync.github.io/#website",
-        "url": "https://bridge-zksync.github.io/",
-        "name": "Bridge zkSync",
-        "inLanguage": "en"
-      },
-      {
-        "@type": "WebApplication",
-        "@id": "https://bridge-zksync.github.io/#app",
-        "name": "Bridge zkSync",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Web",
-        "url": "https://bridge-zksync.github.io/",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://bridge-zksync.github.io/#org",
-        "name": "zkSync",
-        "url": "https://bridge-zksync.github.io/",
-        "sameAs": [
-          "https://zksync.io/"
-        ]
-      }
-    ]
+  <link rel="prefetch" href="dashboard/">
+  <link rel="prerender" href="dashboard/">
+  <style>
+
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --bg: #F6F7FA;
+  --surface: #FFFFFF;
+  --panel: #F8FAFD;
+  --ink: #10131A;
+  --muted: #626B7A;
+  --faint: #96A0AF;
+  --accent: #1755F4;
+  --accent-hover: #0F46D8;
+  --accent-soft: rgba(23, 85, 244, .10);
+  --line: rgba(16, 19, 26, .09);
+  --line-strong: rgba(16, 19, 26, .16);
+  --shadow: 0 28px 70px -34px rgba(22, 34, 64, .34);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(58% 42% at 50% -12%, rgba(23, 85, 244, .12), transparent 62%),
+    linear-gradient(180deg, #FBFCFE 0%, var(--bg) 100%);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px clamp(18px, 4vw, 42px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-size: 1.06rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.brand img {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  box-shadow: 0 0 0 1px var(--line);
+  flex: none;
+}
+
+.brand span {
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-left: 16px;
+}
+
+.nav a {
+  color: var(--muted);
+  font-size: .93rem;
+  font-weight: 500;
+  transition: color .16s ease;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 17px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, .68);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: .91rem;
+  font-weight: 700;
+  box-shadow: 0 12px 32px -26px rgba(16, 19, 26, .45);
+  transition: border-color .16s ease, color .16s ease, transform .16s ease;
+}
+
+.ghost:hover {
+  color: var(--accent);
+  border-color: rgba(23, 85, 244, .34);
+  transform: translateY(-1px);
+}
+
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px clamp(18px, 4vw, 42px);
+  text-align: center;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: clamp(2.65rem, 6.4vw, 4.45rem);
+  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.sub {
+  max-width: 56ch;
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.7vw, 1.17rem);
+}
+
+.sub strong {
+  color: var(--ink);
+  font-weight: 800;
+  box-shadow: inset 0 -.5em 0 var(--accent-soft);
+}
+
+.card {
+  width: min(570px, 100%);
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+.route {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.leg {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  text-align: left;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+}
+
+.label {
+  display: block;
+  color: var(--faint);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  margin-top: 9px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.token {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 1.08rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.switch {
+  flex: none;
+  align-self: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  background: #FFFFFF;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 12px 24px -20px rgba(16, 19, 26, .5);
+  transition: background .16s ease, border-color .16s ease, color .16s ease, transform .16s ease;
+}
+
+.switch:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: rgba(23, 85, 244, .28);
+  transform: translateY(-1px);
+}
+
+.switch span {
+  font-size: 1.12rem;
+  line-height: 1;
+}
+
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 56px;
+  margin-top: 16px;
+  color: #FFFFFF;
+  background: var(--accent);
+  border-radius: 15px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: 0 18px 42px -22px rgba(23, 85, 244, .68);
+  transition: background .16s ease, transform .16s ease, box-shadow .16s ease;
+}
+
+.primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 24px 48px -24px rgba(23, 85, 244, .78);
+}
+
+.footer {
+  padding: 18px 24px 24px;
+  color: var(--faint);
+  text-align: center;
+  font-size: .84rem;
+}
+
+.footer b {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .nav {
+    display: none;
   }
-  </script>
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    gap: 10px;
+    padding: 14px 16px;
+  }
+
+  .brand {
+    font-size: .98rem;
+  }
+
+  .ghost {
+    min-height: 36px;
+    padding: 0 13px;
+    font-size: .86rem;
+  }
+
+  .stage {
+    padding: 6px 16px;
+  }
+
+  h1 {
+    font-size: 2.72rem;
+  }
+
+  .sub {
+    max-width: 32ch;
+    margin-top: 12px;
+    font-size: .98rem;
+    line-height: 1.45;
+  }
+
+  .card {
+    margin-top: 22px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .route {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .leg {
+    padding: 12px 14px;
+  }
+
+  .switch {
+    width: 38px;
+    height: 38px;
+    margin: -2px 0;
+  }
+
+  .switch span {
+    transform: rotate(90deg);
+  }
+
+  .primary {
+    min-height: 52px;
+    margin-top: 14px;
+  }
+
+  .footer {
+    padding: 12px 18px 16px;
+  }
+}
+
+@media (max-height: 700px) {
+  .topbar {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .card {
+    margin-top: 22px;
+  }
+
+  .footer {
+    padding-top: 12px;
+    padding-bottom: 14px;
+  }
+}
+
+
+  
+.footer {
+  text-align: center !important;
+}
+  </style>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="Bridge zkSync">
-      <img src="favicon.png" width="28" height="28" alt="">
+    <div class="brand">
+      <img src="favicon.png" width="30" height="30" alt="">
       <span>Bridge zkSync</span>
-    </a>
-    <nav class="nav" aria-label="Authority references">
-      <a href="https://etherscan.io/" target="_blank" rel="nofollow noopener noreferrer">Etherscan</a>
-      <a href="https://ethereum.org/bridges/" target="_blank" rel="nofollow noopener noreferrer">Ethereum bridges</a>
-      <a href="https://l2beat.com/scaling/projects/zksync-era" target="_blank" rel="nofollow noopener noreferrer">L2BEAT</a>
+    </div>
+    <span class="spacer"></span>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="how-it-works/">How it works</a>
+      <a href="faq/">FAQ</a>
+      <a href="about/">About</a>
+      <a href="security/">Security</a>
+      <a href="supported-chains/">Supported Chains</a>
     </nav>
-    <span class="spacer" aria-hidden="true"></span>
-    <a class="ghost" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Open app</a>
   </header>
-
-  <main class="stage">
-    <section class="hero" aria-labelledby="page-title">
-      <h1 id="page-title">Bridge zkSync</h1>
-      <p class="sub"><strong>Bridge zkSync</strong> moves ETH and tokens between Ethereum and the zkSync Era L2 from your own wallet.</p>
-    </section>
-
-    <section class="card" aria-label="Bridge route">
-      <div class="route">
-        <div class="leg">
-          <span class="label">From</span>
-          <span class="chip">
-            <img class="icon" src="eth.png" width="28" height="28" alt="Ethereum">
-            <span class="token">Ethereum</span>
-          </span>
-        </div>
-        <button class="switch" type="button" data-switch aria-label="Switch bridge direction">
-          <span aria-hidden="true">&#8594;</span>
-        </button>
-        <div class="leg">
-          <span class="label">To</span>
-          <span class="chip">
-            <img class="icon" src="zksync.png" width="28" height="28" alt="zkSync">
-            <span class="token">zkSync</span>
-          </span>
-        </div>
-      </div>
-      <a class="primary" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App <span aria-hidden="true">&#8250;</span></a>
-    </section>
+  <main class="stage" style="padding: 100px 24px; text-align: center; max-width: 800px; margin: 0 auto;">
+    <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 24px; font-weight: 800;">Bridge zkSync</h1>
+    <p class="value" style="font-size: 1.25rem; opacity: 0.8; margin-bottom: 40px; line-height: 1.6;">Secure, non-custodial gateway for decentralized operations. Connect your Web3 wallet to enter the portal.</p>
+    <a class="open-app" href="dashboard/" style="display: inline-flex; justify-content: center; align-items: center; min-height: 52px; padding: 0 32px; border-radius: 9999px; background: var(--accent, #625bf3); color: #fff; font-weight: 700; text-decoration: none; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: transform 0.2s ease;">Open App Dashboard</a>
   </main>
-
-  <footer class="footer">
-    <b>Bridge zkSync</b> &mdash; 2026
-  </footer>
-
-  <script>
-  (function () {
-    "use strict";
-    var button = document.querySelector("[data-switch]");
-    if (!button) return;
-
-    button.addEventListener("click", function () {
-      var chips = document.querySelectorAll(".leg .chip");
-      if (chips.length < 2) return;
-      var first = chips[0].innerHTML;
-      chips[0].innerHTML = chips[1].innerHTML;
-      chips[1].innerHTML = first;
-    });
-  })();
-  </script>
+  <footer class="footer">Bridge zkSync &mdash; 2026</footer>
 </body>
 </html>
