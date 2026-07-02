@@ -1,0 +1,378 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --bg: #F6F7FA;
+  --surface: #FFFFFF;
+  --panel: #F8FAFD;
+  --ink: #10131A;
+  --muted: #626B7A;
+  --faint: #96A0AF;
+  --accent: #1755F4;
+  --accent-hover: #0F46D8;
+  --accent-soft: rgba(23, 85, 244, .10);
+  --line: rgba(16, 19, 26, .09);
+  --line-strong: rgba(16, 19, 26, .16);
+  --shadow: 0 28px 70px -34px rgba(22, 34, 64, .34);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(58% 42% at 50% -12%, rgba(23, 85, 244, .12), transparent 62%),
+    linear-gradient(180deg, #FBFCFE 0%, var(--bg) 100%);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px clamp(18px, 4vw, 42px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-size: 1.06rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.brand img {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  box-shadow: 0 0 0 1px var(--line);
+  flex: none;
+}
+
+.brand span {
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-left: 16px;
+}
+
+.nav a {
+  color: var(--muted);
+  font-size: .93rem;
+  font-weight: 500;
+  transition: color .16s ease;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 17px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, .68);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: .91rem;
+  font-weight: 700;
+  box-shadow: 0 12px 32px -26px rgba(16, 19, 26, .45);
+  transition: border-color .16s ease, color .16s ease, transform .16s ease;
+}
+
+.ghost:hover {
+  color: var(--accent);
+  border-color: rgba(23, 85, 244, .34);
+  transform: translateY(-1px);
+}
+
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px clamp(18px, 4vw, 42px);
+  text-align: center;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: clamp(2.65rem, 6.4vw, 4.45rem);
+  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.sub {
+  max-width: 56ch;
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.7vw, 1.17rem);
+}
+
+.sub strong {
+  color: var(--ink);
+  font-weight: 800;
+  box-shadow: inset 0 -.5em 0 var(--accent-soft);
+}
+
+.card {
+  width: min(570px, 100%);
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+.route {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.leg {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  text-align: left;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+}
+
+.label {
+  display: block;
+  color: var(--faint);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  margin-top: 9px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.token {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 1.08rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.switch {
+  flex: none;
+  align-self: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  background: #FFFFFF;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 12px 24px -20px rgba(16, 19, 26, .5);
+  transition: background .16s ease, border-color .16s ease, color .16s ease, transform .16s ease;
+}
+
+.switch:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: rgba(23, 85, 244, .28);
+  transform: translateY(-1px);
+}
+
+.switch span {
+  font-size: 1.12rem;
+  line-height: 1;
+}
+
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 56px;
+  margin-top: 16px;
+  color: #FFFFFF;
+  background: var(--accent);
+  border-radius: 15px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: 0 18px 42px -22px rgba(23, 85, 244, .68);
+  transition: background .16s ease, transform .16s ease, box-shadow .16s ease;
+}
+
+.primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 24px 48px -24px rgba(23, 85, 244, .78);
+}
+
+.footer {
+  padding: 18px 24px 24px;
+  color: var(--faint);
+  text-align: center;
+  font-size: .84rem;
+}
+
+.footer b {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .nav {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    gap: 10px;
+    padding: 14px 16px;
+  }
+
+  .brand {
+    font-size: .98rem;
+  }
+
+  .ghost {
+    min-height: 36px;
+    padding: 0 13px;
+    font-size: .86rem;
+  }
+
+  .stage {
+    padding: 6px 16px;
+  }
+
+  h1 {
+    font-size: 2.72rem;
+  }
+
+  .sub {
+    max-width: 32ch;
+    margin-top: 12px;
+    font-size: .98rem;
+    line-height: 1.45;
+  }
+
+  .card {
+    margin-top: 22px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .route {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .leg {
+    padding: 12px 14px;
+  }
+
+  .switch {
+    width: 38px;
+    height: 38px;
+    margin: -2px 0;
+  }
+
+  .switch span {
+    transform: rotate(90deg);
+  }
+
+  .primary {
+    min-height: 52px;
+    margin-top: 14px;
+  }
+
+  .footer {
+    padding: 12px 18px 16px;
+  }
+}
+
+@media (max-height: 700px) {
+  .topbar {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .card {
+    margin-top: 22px;
+  }
+
+  .footer {
+    padding-top: 12px;
+    padding-bottom: 14px;
+  }
+}

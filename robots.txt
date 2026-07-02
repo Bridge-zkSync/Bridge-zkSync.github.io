@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://bridge-zksync.github.io/sitemap.xml
