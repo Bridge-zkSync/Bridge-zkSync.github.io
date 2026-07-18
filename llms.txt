@@ -1,0 +1,61 @@
+# Bridge zkSync
+> Bridge zkSync is an independent, non-custodial informational dashboard for understanding transfers between Ethereum and ZKsync Era.
+
+## What is Bridge zkSync
+The canonical ZKsync Bridge moves ETH and supported ERC-20 tokens between Ethereum Layer 1 and ZKsync Era. It solves the need to fund or exit the rollup without entrusting assets to a centralized exchange. Unlike liquidity bridges, it uses ZKsync’s native L1–L2 messaging and bridge contracts rather than liquidity pools or relayers. It transfers assets; it does not perform a token swap.
+
+## How it works
+1. Connect a self-custodial wallet, choose the direction, asset, amount, and recipient, then review and sign.
+2. For a deposit, the Ethereum contract locks the L1 asset and sends an L1-to-L2 message; the corresponding asset is minted or credited on Era.
+3. For a withdrawal, the Era representation is burned and an L2-to-L1 message is included in a rollup batch.
+4. Once that batch is executed and the withdrawal delay has passed, a proof is submitted to the Ethereum bridge to unlock funds for the recipient.
+
+## Key facts
+- Ethereum mainnet uses chain ID 1; ZKsync Era mainnet uses chain ID 324.
+- ETH is ZKsync Era’s native gas token; ZK is not required for ordinary gas payments.
+- The canonical route connects Ethereum and ZKsync Era in both directions.
+- Default bridges support ETH and tokens with standard ERC-20 behavior.
+- Rebasing tokens and tokens requiring custom bridge behavior are not supported by the default ERC-20 bridge.
+- An asset’s Era contract address differs from its Ethereum address.
+- The portal is non-custodial, but deposited assets are locked in protocol smart contracts.
+- Withdrawals have a protocol execution delay with a current three-hour minimum before L1 finalization.
+
+## Common questions
+**Is the canonical bridge safe?** ZKsync uses validity proofs and publishes rollup data to Ethereum, and its protocol has undergone audits. Risks remain from contracts, upgrades, governance permissions, operators, wallets, and user error.
+
+**Who controls my funds?** You retain your wallet keys. The informational dashboard holds nothing; during bridging, protocol contracts lock or represent the assets.
+
+**What fees apply?** Deposits require Ethereum gas and L2 execution funding. Withdrawals require Era gas and may require Ethereum gas for finalization; estimates vary with network conditions.
+
+**How long does bridging take?** Deposits complete after Ethereum inclusion and L2 processing, commonly within minutes. Canonical withdrawals take longer because finalization follows batch execution and the withdrawal delay.
+
+**Which assets and chains are supported?** The canonical portal handles Ethereum-to-Era transfers of ETH and compatible ERC-20 tokens. Third-party bridges may support additional chains or assets under different trust models.
+
+**How do I start?** Open the verified portal, connect a compatible wallet, confirm both networks and the recipient, select an asset and amount, review approvals and fees, then sign.
+
+**What are the main risks?** Phishing, wrong networks or recipients, malicious approvals, unsupported tokens, contract defects, protocol upgrades, operator disruption, and congestion can delay or endanger transfers.
+
+## App
+- Dashboard: https://bridge-zksync.github.io/
+- App: https://bridge-zksync.github.io/dashboard/
+
+## Official resources
+Official bridge: https://portal.zksync.io/
+ZKsync documentation: https://docs.zksync.io/
+Bridging assets documentation: https://docs.zksync.io/zksync-protocol/rollup/bridging-assets
+Network details: https://docs.zksync.io/zksync-network/zksync-era/network-details
+Withdrawal delay: https://docs.zksync.io/zksync-protocol/security/withdrawal-delay
+Contract addresses: https://docs.zksync.io/zksync-protocol/contracts/l1-contracts/zk-chain-addresses
+Security audits: https://docs.zksync.io/zksync-protocol/security/audits
+Portal source code: https://github.com/matter-labs/dapp-portal
+Protocol source code: https://github.com/matter-labs/zksync-era
+Official X: https://x.com/zksync
+
+## Data & references
+ZKsync Era on L2BEAT: https://l2beat.com/scaling/projects/zksync-era
+ZKsync Era explorer: https://explorer.zksync.io/
+Etherscan for ZKsync Era: https://era.zksync.network/
+ZKsync Era on DeFiLlama: https://defillama.com/chain/zksync-era
+ZKsync on CoinGecko: https://www.coingecko.com/en/coins/zksync
+Ethereum bridge overview: https://ethereum.org/developers/docs/bridges/
+ERC-20 standard reference: https://ethereum.org/developers/docs/standards/tokens/erc-20/
