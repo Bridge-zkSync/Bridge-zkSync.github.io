@@ -1,270 +1,267 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>zkSync Bridge — Move ETH & Tokens to zkSync Era</title>
-  <meta name="description" content="Use the zkSync Bridge to bring ETH, USDC and tokens onto zkSync Era, a zk-rollup with native account abstraction. Learn fees, paymasters and timing before you sign, and keep your own keys.">
-  <link rel="canonical" href="https://bridge-zksync.github.io/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="zkSync Bridge">
-  <meta property="og:description" content="Use the zkSync Bridge to bring ETH, USDC and tokens onto zkSync Era, a zk-rollup with native account abstraction. Learn fees, paymasters and timing before you sign, and keep your own keys.">
-  <meta property="og:url" content="https://bridge-zksync.github.io/">
-  <meta property="og:image" content="https://bridge-zksync.github.io/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="zkSync Bridge">
-  <meta name="twitter:description" content="Use the zkSync Bridge to bring ETH, USDC and tokens onto zkSync Era, a zk-rollup with native account abstraction. Learn fees, paymasters and timing before you sign, and keep your own keys.">
-  <meta name="twitter:image" content="https://bridge-zksync.github.io/og.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zkSync Bridge — Move ETH & Tokens to zkSync Era</title>
+<meta name="description" content="Use the zkSync Bridge to bring ETH, USDC and tokens onto zkSync Era, a zk-rollup with native account abstraction. Learn fees, paymasters and timing before you sign, and keep your own keys.">
+<link rel="canonical" href="https://bridge-zksync.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zkSync Bridge">
+<meta property="og:description" content="Use the zkSync Bridge to bring ETH, USDC and tokens onto zkSync Era, a zk-rollup with native account abstraction. Learn fees, paymasters and timing before you sign, and keep your own keys.">
+<meta property="og:url" content="https://bridge-zksync.github.io/">
+<meta property="og:image" content="https://bridge-zksync.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="zkSync Bridge">
+<meta name="twitter:description" content="Use the zkSync Bridge to bring ETH, USDC and tokens onto zkSync Era, a zk-rollup with native account abstraction. Learn fees, paymasters and timing before you sign, and keep your own keys.">
+<meta name="twitter:image" content="https://bridge-zksync.github.io/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://bridge-zksync.github.io/#website", "url": "https://bridge-zksync.github.io/", "name": "zkSync Bridge — Move ETH & Tokens to zkSync Era"}, {"@type": "WebPage", "@id": "https://bridge-zksync.github.io/#webpage", "url": "https://bridge-zksync.github.io/", "name": "zkSync Bridge — Move ETH & Tokens to zkSync Era", "isPartOf": {"@id": "https://bridge-zksync.github.io/#website"}, "description": "Use the zkSync Bridge to bring ETH, USDC and tokens onto zkSync Era, a zk-rollup with native account abstraction. Learn fees, paymasters and timing before you sign, and keep your own keys.", "datePublished": "2026-10-09", "dateModified": "2026-10-09"}, {"@type": "SoftwareApplication", "name": "zkSync Bridge", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bridge-zksync.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Bridges"}, {"@type": "ListItem", "position": 3, "name": "zkSync Bridge"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is account abstraction on zkSync?", "acceptedAnswer": {"@type": "Answer", "text": "On zkSync Era every account is a smart contract, so wallets can batch actions, use paymasters and set custom rules natively."}}, {"@type": "Question", "name": "Can I pay zkSync fees without ETH?", "acceptedAnswer": {"@type": "Answer", "text": "Often yes — a paymaster can sponsor gas or let you pay in an ERC-20 such as USDC, depending on the app."}}, {"@type": "Question", "name": "Why does a zkSync withdrawal take longer than a deposit?", "acceptedAnswer": {"@type": "Answer", "text": "Deposits credit after Ethereum confirmations; withdrawals wait for a validity proof to finalize on Ethereum first."}}, {"@type": "Question", "name": "Do I need an account to use the zkSync Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "No sign-up — you connect a self-custody wallet and bridge on-chain, keeping custody of your funds."}}, {"@type": "Question", "name": "What if my deposit fails?", "acceptedAnswer": {"@type": "Answer", "text": "It reverts and you keep your assets; only the Ethereum gas for the attempt is spent."}}]}]}</script>
-  <style>
-    :root{--bg:#FFFDFB;--surface:#FFFFFF;--text:#17141A;--muted:#6B6570;--accent:#1E69FF;--accent-ink:#FFFFFF;--radius:14px;--display:"Manrope";--body:"Inter"}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:2rem}
-    body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.7 var(--body);-webkit-font-smoothing:antialiased}
-    a{color:var(--accent);text-underline-offset:.22em}
-    a:hover{text-decoration-thickness:2px}
-    :focus-visible{outline:3px solid var(--accent);outline-offset:5px}
-    ::selection{background:var(--accent);color:var(--accent-ink)}
-    h1,h2,h3,p{margin:0}
-    h1,h2,h3{font-family:var(--display);text-wrap:balance}
-    svg{display:block;flex-shrink:0}
-    img{max-width:100%;height:auto}
-    .c4e9003{width:min(1180px,calc(100% - 64px));margin-inline:auto}
-    .c74ad95{position:absolute;top:1rem;left:1rem;z-index:10;transform:translateY(-200%);padding:.7rem 1rem;background:var(--surface);border-radius:var(--radius)}
-    .c74ad95:focus{transform:translateY(0)}
-    .c4a119e{min-height:96px;display:flex;align-items:center;justify-content:space-between;gap:2rem;border-bottom:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
-    .c9642a8{display:inline-flex;align-items:center;gap:.7rem;color:var(--text);font:600 1.2rem/1 var(--display);letter-spacing:-.04em;text-decoration:none}
-    .c8a98b7{display:grid;place-items:center;width:38px;height:38px;background:var(--accent);color:var(--accent-ink);border-radius:var(--radius)}
-    .cdf0d69{display:flex;align-items:center;gap:1.8rem}
-    .cdf0d69>a{font-size:.88rem;font-weight:600;color:var(--text);text-decoration:none}
-    .cdf0d69>a:hover{color:var(--accent)}
-    .cdf0d69 .cfde8c4{padding:.65rem 1rem;border:1px solid color-mix(in srgb,var(--text) 18%,transparent);border-radius:var(--radius)}
-    .c13c909{padding-top:1.6rem;font-size:.8rem;color:var(--muted)}
-    .c08b904{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--muted)}
-    ol.c08b904,ul.c08b904,.c08b904 ol,.c08b904 ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.5rem}
-    .c08b904 a{color:var(--muted);text-decoration:none}
-    .c08b904 a:hover{color:var(--accent)}
-    .c08b904 [aria-current]{color:var(--text)}
-    .c2bc18c{position:relative;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);align-items:center;gap:clamp(2rem,6vw,5.5rem);padding-block:4.5rem 5.5rem}
-    .c18d37f{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.35rem;color:var(--accent);font-size:.86rem;font-weight:600}
-    .c18d37f::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 10%,transparent)}
-    h1{font-size:clamp(2.5rem,4.8vw,4.7rem);line-height:1.06;letter-spacing:-.055em;overflow-wrap:anywhere}
-    h1 em{color:var(--accent);font-style:normal}
-    .cd206af{margin-top:1.5rem;max-width:49ch;font-size:1.06rem;line-height:1.85;color:var(--muted)}
-    .cbe1a88{display:inline-flex;justify-content:center;align-items:center;gap:1.15rem;min-height:54px;padding:.9rem 1.4rem;border:1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent);border-radius:var(--radius);background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 88%,var(--surface)),var(--accent));box-shadow:0 8px 20px color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent-ink);font:600 .95rem/1.4 var(--body);text-decoration:none;transition:transform .2s,box-shadow .2s}
-    .cbe1a88:hover{transform:translateY(-2px);box-shadow:0 12px 26px color-mix(in srgb,var(--accent) 26%,transparent)}
-    .cbe5eae>.cbe1a88{margin-top:2rem}
-    .c80eec9{margin-top:1.1rem;color:var(--muted);font-size:.8rem}
-    .cbcc285{position:relative;isolation:isolate;min-width:0;padding:1.7rem;background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:calc(var(--radius) * 1.5);box-shadow:0 28px 70px -20px color-mix(in srgb,var(--text) 19%,transparent),0 3px 10px color-mix(in srgb,var(--text) 4%,transparent)}
-    .cbcc285::before{content:"";position:absolute;inset:-28px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 80% 20%,color-mix(in srgb,var(--accent) 14%,transparent),transparent 68%);border-radius:calc(var(--radius) * 2)}
-    .cd843cf{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.5rem}
-    .cd843cf h2{font-size:1.15rem;letter-spacing:-.035em}
-    .c595f18{padding:.25rem .65rem;border-radius:var(--radius);background:color-mix(in srgb,var(--accent) 10%,var(--surface));color:var(--accent);font-size:.72rem;font-weight:600}
-    .cb5ac37{display:grid;grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr);align-items:center;gap:.6rem;padding:1rem;border:1px solid color-mix(in srgb,var(--text) 9%,transparent);border-radius:var(--radius);background:color-mix(in srgb,var(--bg) 65%,var(--surface))}
-    .c9b2711{min-width:0;display:flex;align-items:center;gap:.7rem}
-    .c9b2711:last-child{justify-content:flex-end}
-    .c68b80f{font-size:.76rem;color:var(--muted)}
-    .c112c9b{min-width:0;display:flex;align-items:center;justify-content:center;max-width:100px;min-height:38px;overflow-wrap:anywhere}
-    .c112c9b img,.c112c9b svg{max-width:100%;max-height:38px;object-fit:contain}
-    .c7c5317{display:grid;place-items:center;width:34px;height:34px;border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:50%;color:var(--accent);background:var(--surface)}
-    .cf95296{margin-top:1.5rem}
-    .c5291fd{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.55rem}
-    .c5291fd label{font-size:.85rem;font-weight:600}
-    .c217bc6{font-size:.74rem;color:var(--muted)}
-    .c64cb98{display:flex;align-items:center;gap:.8rem;padding:.85rem 1rem;border:1px solid color-mix(in srgb,var(--text) 20%,transparent);border-radius:var(--radius);background:var(--bg);transition:border-color .2s,box-shadow .2s}
-    .c64cb98:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
-    .c64cb98:has([aria-invalid="true"]){border-color:var(--accent)}
-    .c64cb98 input{width:100%;min-width:0;padding:0;border:0;outline:none;background:var(--bg);color:var(--text);font:500 2rem/1.25 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-    .c64cb98 input::placeholder{color:var(--muted)}
-    .c64cb98>span{font-size:.8rem;color:var(--muted)}
-    .c785e7b{min-height:1.4em;margin-top:.5rem;font-size:.73rem;color:var(--muted)}
-    .c2bacf3{margin-top:1.3rem;padding:1.25rem;border:1px solid color-mix(in srgb,var(--accent) 17%,transparent);border-radius:var(--radius);background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,var(--surface)),color-mix(in srgb,var(--accent) 3%,var(--surface)))}
-    .cd30a72{font-size:.8rem;color:var(--muted)}
-    .c10be9f{display:flex;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin:.25rem 0 1rem}
-    .c10be9f output{font:600 clamp(1.8rem,3vw,2.6rem)/1.2 var(--display);letter-spacing:-.05em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-    .c10be9f span{font-size:.8rem;color:var(--muted)}
-    .c3fcc94{display:grid;gap:.5rem;margin:0;padding-top:.9rem;border-top:1px solid color-mix(in srgb,var(--accent) 14%,transparent);font-size:.82rem}
-    .c3fcc94>div{display:flex;justify-content:space-between;gap:1rem}
-    .c3fcc94 dt{color:var(--muted)}
-    .c3fcc94 dd{margin:0;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
-    .cbcc285>.cbe1a88{width:100%;margin-top:1.2rem}
-    .cb30fd0{margin-top:1rem;font-size:.75rem;color:var(--muted)}
-    .cb30fd0 summary{cursor:pointer;width:fit-content;text-underline-offset:.2em}
-    .cb30fd0 summary:hover{color:var(--accent)}
-    .cb30fd0 p{margin-top:.55rem;line-height:1.7}
-    .ce67c1f{padding:2rem 2.25rem;border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:var(--radius);background:var(--surface)}
-    .cfdd4e1{font:600 1.4rem/1.3 var(--display);letter-spacing:-.035em;margin-bottom:1.25rem}
-    .c4b57f3{overflow-x:auto}
-    .cc7ef76{width:100%;border-collapse:collapse;text-align:left;font-size:.9rem}
-    .cc7ef76 caption{text-align:left;margin-bottom:1rem;color:var(--muted)}
-    .cc7ef76 th,.cc7ef76 td{padding:1rem 1.2rem;border-bottom:1px solid color-mix(in srgb,var(--text) 8%,transparent);vertical-align:top}
-    .cc7ef76 th:first-child,.cc7ef76 td:first-child{padding-left:0}
-    .cc7ef76 th:last-child,.cc7ef76 td:last-child{padding-right:0}
-    .cc7ef76 th{font-weight:600;color:var(--text)}
-    .cc7ef76 td{color:var(--muted)}
-    .cc7ef76 tbody tr:last-child>*{border-bottom:0}
-    .cc7ef76 thead{background:color-mix(in srgb,var(--accent) 5%,var(--surface))}
-    .cb7c877{max-width:820px;margin:4.5rem auto}
-    .c3fb3a8{margin-block:0 3rem;padding-bottom:2.75rem;border-bottom:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
-    .ce15191{margin:0 0 1.2rem;font:600 clamp(1.65rem,3vw,2.25rem)/1.2 var(--display);letter-spacing:-.04em}
-    .c22f654{color:var(--muted);line-height:1.9;overflow-wrap:anywhere}
-    .c22f654 p+p{margin-top:1.1rem}
-    .c22f654 h3{margin:1.8rem 0 .7rem;font-size:1.25rem;line-height:1.4;color:var(--text)}
-    .c22f654 strong{color:var(--text);font-weight:600}
-    .c22f654 ul,.c22f654 ol{padding-left:1.4rem;margin-block:1.2rem}
-    .c22f654 li+li{margin-top:.55rem}
-    .c22f654 li::marker{color:var(--accent)}
-    .c22f654 blockquote{margin:1.5rem 0;padding:1rem 1.4rem;border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;background:color-mix(in srgb,var(--accent) 6%,var(--surface));color:var(--text)}
-    .cc7e737{margin-block:.8rem;border:1px solid color-mix(in srgb,var(--text) 12%,transparent);border-radius:var(--radius);background:var(--surface);overflow:hidden}
-    .c3d3bc3{position:relative;cursor:pointer;padding:1.2rem 3.3rem 1.2rem 1.35rem;list-style:none;font:500 1.05rem/1.5 var(--display);color:var(--text)}
-    .c3d3bc3::-webkit-details-marker{display:none}
-    .c3d3bc3::after{content:"+";position:absolute;right:1.35rem;top:1.15rem;color:var(--accent);font-size:1.3rem}
-    .cc7e737[open]>.c3d3bc3::after{content:"−"}
-    .cc7e737[open]{border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
-    .c3d3bc3:focus-visible{outline-offset:-5px;border-radius:var(--radius)}
-    .cbc505f{padding:0 1.35rem 1.35rem;color:var(--muted);font-size:.95rem;line-height:1.85;overflow-wrap:anywhere}
-    .cbc505f p+p{margin-top:.8rem}
-    .c15e63a{padding:2rem 2.25rem;border-radius:var(--radius);background:color-mix(in srgb,var(--surface) 75%,var(--bg));border:1px solid color-mix(in srgb,var(--text) 8%,transparent)}
-    .c9cef02{margin:0;padding-left:1.2rem;color:var(--muted);font-size:.86rem}
-    .c548021{padding:.35rem 0 .35rem .3rem;overflow-wrap:anywhere}
-    .c548021::marker{color:var(--muted)}
-    .c548021 a{color:var(--text);text-decoration-color:color-mix(in srgb,var(--accent) 45%,transparent)}
-    .c548021 a:hover{color:var(--accent)}
-    .cb089e4{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:3rem;padding-block:1.7rem 2rem;border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent);color:var(--muted);font-size:.78rem}
-    .c9a6b98{font:600 .95rem/1.4 var(--display);color:var(--text)}
-    @media(min-width:1400px){.c2bc18c{padding-block:5.5rem 6.5rem}}
-    @media(max-width:900px){.c2bc18c{gap:2rem;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.cbcc285{padding:1.25rem}.cb5ac37{padding:.8rem}.c9b2711{flex-direction:column;gap:.25rem}.c9b2711:last-child{flex-direction:column-reverse}h1{font-size:clamp(2.5rem,5.5vw,4rem)}}
-    @media(max-width:720px){.c4e9003{width:calc(100% - 40px)}.c4a119e{min-height:78px;gap:1rem}.cdf0d69{gap:1rem}.cdf0d69>.c9b919b{display:none}.c2bc18c{grid-template-columns:minmax(0,1fr);padding-block:2.75rem 3rem;gap:2.5rem}.cbe5eae{max-width:560px}h1{font-size:clamp(2.6rem,9vw,4rem)}.cd206af{font-size:1rem}.cbcc285{width:100%;max-width:520px;justify-self:center;padding:1.5rem}.c9b2711,.c9b2711:last-child{flex-direction:row}.ce67c1f,.c15e63a{padding:1.5rem}.cb7c877{margin-block:3rem}.cc7ef76 th,.cc7ef76 td{padding:.85rem .75rem}.c3fb3a8{margin-bottom:2rem;padding-bottom:2rem}.cb089e4{margin-top:2rem}}
-    @media(max-width:380px){.c4e9003{width:calc(100% - 28px)}.cbcc285{padding:1rem}.c9642a8{font-size:1.05rem}.cdf0d69 .cfde8c4{padding:.55rem .7rem}.c9b2711,.c9b2711:last-child{flex-direction:column}.c9b2711:last-child{flex-direction:column-reverse}.ce67c1f,.c15e63a{padding:1.1rem}.c3fcc94{font-size:.76rem}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
-  </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://bridge-zksync.github.io/#website", "url": "https://bridge-zksync.github.io/", "name": "zkSync Bridge — Move ETH & Tokens to zkSync Era"}, {"@type": "WebPage", "@id": "https://bridge-zksync.github.io/#webpage", "url": "https://bridge-zksync.github.io/", "name": "zkSync Bridge — Move ETH & Tokens to zkSync Era", "isPartOf": {"@id": "https://bridge-zksync.github.io/#website"}, "description": "Use the zkSync Bridge to bring ETH, USDC and tokens onto zkSync Era, a zk-rollup with native account abstraction. Learn fees, paymasters and timing before you sign, and keep your own keys.", "datePublished": "2026-10-09", "dateModified": "2026-10-09"}, {"@type": "SoftwareApplication", "name": "zkSync Bridge", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bridge-zksync.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Bridges"}, {"@type": "ListItem", "position": 3, "name": "zkSync Bridge"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What makes an account on zkSync Era different?", "acceptedAnswer": {"@type": "Answer", "text": "It's a smart contract by default, not a plain externally-owned address, so it can use paymasters, batch calls and grant session keys natively — none of which require installing a separate contract wallet."}}, {"@type": "Question", "name": "Can I use the zkSync Bridge without holding ETH?", "acceptedAnswer": {"@type": "Answer", "text": "You need ETH to pay Ethereum's own gas for the deposit transaction itself, but once you're on zkSync Era a paymaster can let you cover fees in USDC or another accepted ERC-20 instead."}}, {"@type": "Question", "name": "Why does a withdrawal take longer than a deposit?", "acceptedAnswer": {"@type": "Answer", "text": "A deposit only waits on Ethereum's confirmations. A withdrawal waits for the Boojum prover to finish proving the batch it belongs to and for that proof to verify on Ethereum, a longer, security-driven step rather than a delay added on purpose."}}, {"@type": "Question", "name": "Do I have to sign up to use the zkSync Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "No. You connect a wallet that supports zkSync Era's account model and transact directly on-chain; there's no account creation outside the smart contract account itself."}}, {"@type": "Question", "name": "What happens if my deposit transaction doesn't go through?", "acceptedAnswer": {"@type": "Answer", "text": "Nothing is minted on zkSync Era until the transaction confirms, and a failed attempt only costs the Ethereum gas spent trying — the asset you were sending stays exactly where it was."}}, {"@type": "Question", "name": "Is the ZK token needed to bridge?", "acceptedAnswer": {"@type": "Answer", "text": "No — ZK covers governance and fee-market roles around the ecosystem, but bridging, paying gas through a paymaster and withdrawing all work without ever holding it."}}, {"@type": "Question", "name": "What's the difference between the canonical bridge and an app's native onboarding?", "acceptedAnswer": {"@type": "Answer", "text": "The canonical zkSync Bridge moves assets you already hold on Ethereum across. Native onboarding funds a brand-new smart account on zkSync Era directly, often through a sponsored first transaction, for someone who doesn't have anything to bridge yet."}}]}]}</script>
+<style>
+:root{--bg:#FFFDFB;--surface:#FFFFFF;--text:#17141A;--muted:#6B6570;--accent:#1E69FF;--accent-ink:#FFFFFF;--radius:14px;--display:"Manrope";--body:"Inter"}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:2rem}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.7 var(--body);-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:var(--accent-ink)}
+a{color:var(--text);text-underline-offset:.22em;text-decoration-thickness:1px}
+a:hover{color:var(--accent)}
+a,input,summary{touch-action:manipulation}
+:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+img,svg{max-width:100%;vertical-align:middle}
+img{height:auto}
+h1,h2,h3,h4,h5,h6{font-family:var(--display);line-height:1.15;letter-spacing:-.035em;text-wrap:balance}
+p{margin:0 0 1.25rem}
+.c148af4{width:min(1180px,calc(100% - 4rem));margin-inline:auto}
+.cf804e4{position:absolute;top:1rem;left:1rem;transform:translateY(-180%);z-index:5;padding:.65rem 1rem;background:var(--surface);border-radius:var(--radius)}
+.cf804e4:focus{transform:translateY(0)}
+.c97787f{min-height:96px;display:flex;align-items:center;justify-content:space-between;gap:2rem;border-bottom:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
+.cb88fa2{display:flex;align-items:center;gap:.75rem;font:650 1.15rem/1.2 var(--display);letter-spacing:-.035em}
+.cbb20a0{display:grid;place-items:center;width:38px;height:38px;background:var(--accent);color:var(--accent-ink);border-radius:var(--radius)}
+.c713342{width:20px;height:20px;fill:none;stroke:var(--text);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.cbb20a0 .c713342,.ce1a267 .c713342{stroke:var(--accent-ink)}
+.ca8f7d6{display:flex;align-items:center;gap:1.75rem;font-size:.875rem;font-weight:550}
+.ca8f7d6 a{text-decoration:none}
+.ca8f7d6 .c00855a{padding:.6rem 1rem;background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 13%,transparent);border-radius:var(--radius)}
+.cd67ed6{padding-block:1.6rem .5rem;font-size:.8rem;color:var(--muted);overflow-wrap:anywhere}
+.c511e69{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;list-style:none;padding:0;margin:0;color:var(--muted)}
+.c511e69 a{color:var(--muted);text-decoration:none}
+.c511e69 a:hover{color:var(--text);text-decoration:underline}
+.cd25ad2{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:center;padding-block:3.5rem 5.5rem}
+.cff50c1{min-width:0}
+.c8c8db5{display:flex;align-items:center;gap:.6rem;margin-bottom:1.4rem;color:var(--muted);font-size:.875rem}
+.c8c8db5::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 12%,transparent)}
+h1{font-size:clamp(2.65rem,4.7vw,4.7rem);font-weight:600;margin:0 0 1.5rem;overflow-wrap:anywhere}
+h1 em{font-style:normal;color:var(--accent)}
+.c759cc3{font-size:1.075rem;line-height:1.85;color:var(--muted);max-width:48ch;margin-bottom:2rem}
+.ce1a267{display:inline-flex;align-items:center;justify-content:center;gap:1.4rem;min-height:52px;padding:.85rem 1.4rem;background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 88%,var(--surface)),var(--accent));color:var(--accent-ink);font-weight:650;font-size:.9rem;text-decoration:none;border:1px solid color-mix(in srgb,var(--accent) 80%,var(--text));border-radius:var(--radius);box-shadow:0 5px 14px color-mix(in srgb,var(--accent) 18%,transparent);transition:transform .18s ease,box-shadow .18s ease}
+.ce1a267:hover{color:var(--accent-ink);transform:translateY(-2px);box-shadow:0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent)}
+.cdddd43{position:relative;isolation:isolate;min-width:0;background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:var(--radius);box-shadow:0 24px 65px -28px color-mix(in srgb,var(--text) 28%,transparent),0 3px 10px color-mix(in srgb,var(--text) 4%,transparent)}
+.cdddd43::before{content:"";position:absolute;inset:-1.5rem;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 80% 15%,color-mix(in srgb,var(--accent) 13%,transparent),color-mix(in srgb,var(--accent) 0%,transparent) 68%);border-radius:var(--radius)}
+.c1dd809{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.5rem 1.75rem;border-bottom:1px solid color-mix(in srgb,var(--text) 9%,transparent)}
+.c1dd809 h2{font-size:1.2rem;font-weight:600;margin:0}
+.c5ad253{font-size:.72rem;line-height:1.4;color:var(--muted);padding:.35rem .65rem;border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:var(--radius)}
+.caccc02{padding:1.6rem 1.75rem 1.75rem}
+.c8e2fa2{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);align-items:center;gap:.6rem;margin-bottom:1.5rem}
+.c1fe311{min-width:0;display:flex;align-items:center;gap:.75rem;padding:.85rem;background:var(--bg);border:1px solid color-mix(in srgb,var(--text) 7%,transparent);border-radius:var(--radius)}
+.c2ead45{font-size:.75rem;color:var(--muted)}
+.cc2a7cc{display:flex;align-items:center;justify-content:center;min-width:0;overflow-wrap:anywhere;line-height:1.25;font-size:.8rem}
+.cc2a7cc img,.cc2a7cc svg{width:32px;max-height:32px;object-fit:contain}
+.c27f602{display:grid;place-items:center;height:36px;border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:50%}
+.c599a47{display:block;margin-bottom:.5rem;font-size:.825rem;font-weight:550}
+.c9b0f40{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:0 0 1.3rem}
+.ccd2a36{min-width:0}
+.c10b21e{position:relative}
+.c10b21e::after{content:"";position:absolute;right:.9rem;top:50%;width:.5rem;height:.5rem;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.c7db073{width:100%;padding:.7rem 2rem .7rem .85rem;background:var(--bg);color:var(--text);border:1px solid color-mix(in srgb,var(--text) 18%,transparent);border-radius:var(--radius);font:550 .9rem/1.3 var(--body);appearance:none;-webkit-appearance:none;cursor:pointer}
+.c7db073:focus-visible{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 13%,transparent)}
+.c425a6c{display:flex;align-items:center;gap:.5rem;padding:.8rem 1rem;background:var(--bg);border:1px solid color-mix(in srgb,var(--text) 18%,transparent);border-radius:var(--radius)}
+.c425a6c:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 13%,transparent)}
+.c425a6c input{width:100%;min-width:0;padding:0;border:0;outline:none;background:var(--bg);color:var(--text);font:550 2rem/1.3 var(--display);font-variant-numeric:tabular-nums}
+.c425a6c input::placeholder{color:var(--muted)}
+.c598f67{font-size:.8rem;color:var(--muted)}
+.c5c1630{font-size:.72rem;line-height:1.6;color:var(--muted);margin:.6rem 0 1.3rem}
+.c55d7a2{font-size:.8rem;color:var(--text);margin:.6rem 0}
+[hidden]{display:none!important}
+.c72a29a{padding:1.2rem;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,var(--surface)),color-mix(in srgb,var(--accent) 3%,var(--surface)));border:1px solid color-mix(in srgb,var(--accent) 18%,transparent);border-radius:var(--radius)}
+.c10b3d5{display:block;color:var(--muted);font-size:.78rem;margin-bottom:.3rem}
+.ca413bf{display:block;font:600 clamp(1.9rem,3vw,2.6rem)/1.2 var(--display);letter-spacing:-.045em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.c546e83{font:400 .8rem/1.5 var(--body);letter-spacing:0;color:var(--muted)}
+.cbd162d{display:grid;gap:.6rem;margin:1rem 0 0;padding-top:.9rem;border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent);font-size:.8rem}
+.cbd162d div{display:flex;justify-content:space-between;gap:1rem}
+.cbd162d dt{color:var(--muted)}
+.cbd162d dd{margin:0;text-align:right;font-weight:550;font-variant-numeric:tabular-nums}
+.cdddd43 .ce1a267{display:flex;width:100%;margin-top:1.25rem;justify-content:space-between}
+.c6fba24{margin-top:1rem;color:var(--muted);font-size:.75rem}
+.c6fba24 summary{cursor:pointer;text-underline-offset:.2em}
+.c6fba24 summary:hover{color:var(--text)}
+.c6fba24 p{margin:.7rem 0 0;line-height:1.7}
+.c82a946{padding:2rem 2.25rem;background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:var(--radius)}
+.c0fa209{font-size:1.4rem;font-weight:600;margin:0 0 1.4rem}
+.c8c9b4e{overflow-x:auto}
+.c703ba0{width:100%;border-collapse:collapse;text-align:left;font-size:.9rem}
+.c703ba0 caption{text-align:left;color:var(--muted);padding-bottom:1rem}
+.c703ba0 th,.c703ba0 td{padding:1rem 1.1rem;border-bottom:1px solid color-mix(in srgb,var(--text) 9%,transparent);vertical-align:top;overflow-wrap:anywhere}
+.c703ba0 th{font-weight:550;color:var(--muted)}
+.c703ba0 th:first-child,.c703ba0 td:first-child{padding-left:0}
+.c703ba0 th:last-child,.c703ba0 td:last-child{padding-right:0}
+.c703ba0 tbody tr:last-child>*{border-bottom:0}
+.ca7b70f{width:min(800px,100%);margin:4.5rem auto}
+.c0bd95f{margin-bottom:3.25rem;scroll-margin-top:2rem}
+.cbe70c8{font:600 clamp(1.65rem,3vw,2.3rem)/1.2 var(--display);letter-spacing:-.035em;margin:0 0 1.25rem;text-wrap:balance}
+.c505ce0{color:var(--muted);font:400 1rem/1.85 var(--body);overflow-wrap:anywhere}
+.c505ce0 h3,.c505ce0 h4{color:var(--text);margin:1.8rem 0 .8rem}
+.c505ce0 strong{color:var(--text);font-weight:600}
+.c505ce0 a,.c9cb896 a,.c44a008 a{text-decoration-color:color-mix(in srgb,var(--accent) 60%,var(--text))}
+.c505ce0 ul,.c505ce0 ol,.c9cb896 ul,.c9cb896 ol{padding-left:1.4rem}
+.c505ce0 li+li,.c9cb896 li+li{margin-top:.5rem}
+.c505ce0 blockquote{margin:1.8rem 0;padding:.3rem 0 .3rem 1.25rem;border-left:3px solid var(--accent);color:var(--text)}
+.c505ce0 blockquote p:last-child{margin-bottom:0}
+.c505ce0 table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse}
+.c505ce0 th,.c505ce0 td{padding:.75rem;border:1px solid color-mix(in srgb,var(--text) 12%,transparent);text-align:left}
+.c505ce0 code,.c505ce0 pre{font-family:var(--body);background:var(--surface);border-radius:var(--radius)}
+.c505ce0 pre{padding:1rem;overflow-x:auto}
+.c9010ae{margin:.85rem 0;background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 11%,transparent);border-radius:var(--radius);overflow:hidden}
+.cf79a5b{position:relative;list-style:none;cursor:pointer;padding:1.3rem 3.8rem 1.3rem 1.4rem;font:550 1.05rem/1.5 var(--display);color:var(--text)}
+.cf79a5b::-webkit-details-marker{display:none}
+.cf79a5b::after{content:"+";position:absolute;right:1.4rem;top:1.25rem;font:400 1.4rem/1.2 var(--body);color:var(--muted)}
+.c9010ae[open]>.cf79a5b::after{content:"−"}
+.c9010ae[open]{border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+.cf79a5b:focus-visible{outline-offset:-5px}
+.c9cb896{padding:0 1.4rem 1.4rem;color:var(--muted);font-size:.95rem;line-height:1.8;overflow-wrap:anywhere}
+.c9cb896 p:last-child{margin-bottom:0}
+.cbcb4da{padding:2rem 0 3rem;border-top:1px solid color-mix(in srgb,var(--text) 12%,transparent)}
+.cb042ad{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem 2rem;list-style:none;padding:0;margin:0}
+.c44a008{font-size:.85rem;color:var(--muted);overflow-wrap:anywhere;padding:.65rem 0}
+.c181178{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-block:1.6rem 2rem;border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent);font-size:.8rem;color:var(--muted)}
+.c181178 p{margin:0}
+.c181178 a{color:var(--muted)}
+@media(min-width:1500px){.cd25ad2{padding-block:5rem 6rem}}
+@media(max-width:900px){.cd25ad2{gap:2rem}.c1dd809,.caccc02{padding:1.25rem}.c1fe311{padding:.65rem;gap:.5rem}.ca8f7d6{gap:1rem}}
+@media(max-width:760px){.c148af4{width:calc(100% - 2.5rem)}.c97787f{min-height:80px;gap:1rem}.ca8f7d6 .c7e1e7c{display:none}.cd25ad2{grid-template-columns:1fr;padding-block:2.5rem 3rem;gap:2.5rem}.cff50c1{max-width:600px}h1{font-size:clamp(2.6rem,9vw,4rem)}.c759cc3{max-width:55ch}.cdddd43{width:100%;max-width:520px;justify-self:center}.cdddd43::before{inset:-.75rem}.c82a946{padding:1.5rem}.ca7b70f{margin-block:3rem}.cb042ad{grid-template-columns:1fr;gap:.25rem}.c181178{align-items:flex-start;flex-direction:column;gap:.6rem}}
+@media(max-width:380px){.c148af4{width:calc(100% - 2rem)}.cb88fa2{font-size:1rem;gap:.5rem}.cbb20a0{width:30px;height:30px}.ca8f7d6 .c00855a{padding:.55rem .7rem}.c1dd809,.caccc02{padding:1rem}.c8e2fa2{gap:.4rem;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr)}.c27f602{height:28px}.c1fe311{flex-direction:column;align-items:flex-start}.c82a946{padding:1.1rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ce1a267{transition:none}}
+</style>
 </head>
 <body>
-  <a class="c74ad95" href="#content">Skip to content</a>
-  <div class="c4e9003">
-    <nav class="c4a119e" aria-label="Primary navigation">
-      <a class="c9642a8" href="#" aria-label="Transfer guide home">
-        <span class="c8a98b7" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M5 19V11a7 7 0 0 1 14 0v8M9 19v-8a3 3 0 0 1 6 0v8" stroke="var(--accent-ink)" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-        Transfer guide
-      </a>
-      <div class="cdf0d69">
-        <a class="c9b919b" href="#key-facts">Key facts</a>
-        <a class="c9b919b" href="#sources">Sources</a>
-        <a class="cfde8c4" href="dashboard/">Open app <span aria-hidden="true">↗</span></a>
-      </div>
-    </nav>
-    <div class="c13c909"><nav class="c08b904" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Bridges</span> <span>/</span> <span>zkSync Bridge</span></nav></div>
-    <section class="c2bc18c" aria-labelledby="hero-heading">
-      <div class="cbe5eae">
-        <span class="c18d37f">Transfer calculator</span>
-        <h1 id="hero-heading">zkSync <em>Bridge</em>.</h1>
-        <p class="cd206af">The zkSync Bridge brings ETH, USDC and tokens onto zkSync Era, a zk-rollup where every wallet is a smart account thanks to native account abstraction. You review the amount received and the fee before signing, and your funds stay in your own wallet the whole time.</p>
-        <a class="cbe1a88" href="dashboard/">Open app <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="var(--accent-ink)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <p class="c80eec9">Estimate the fee. See the timing. Plan your transfer.</p>
-      </div>
-      <aside class="cbcc285" aria-labelledby="calculator-heading">
-        <div class="cd843cf">
-          <h2 id="calculator-heading">Your transfer, calculated</h2>
-          <span class="c595f18">Estimator</span>
-        </div>
-        <div class="cb5ac37" aria-label="Transfer route">
-          <div class="c9b2711"><span class="c112c9b"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28"></span><span class="c68b80f">From</span></div>
-          <span class="c7c5317" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <div class="c9b2711"><span class="c68b80f">To</span><span class="c112c9b"></span></div>
-        </div>
-        <div class="cf95296">
-          <div class="c5291fd"><label for="amount">You send</label><span class="c217bc6">Transfer amount</span></div>
-          <div class="c64cb98"><input id="amount" type="text" inputmode="decimal" value="1000" autocomplete="off" spellcheck="false" maxlength="24" aria-describedby="amount-help" aria-invalid="false"><span>units</span></div>
-          <p id="amount-help" class="c785e7b">Enter an amount from 1 to 1,000,000 units.</p>
-        </div>
-        <div class="c2bacf3" aria-live="polite" aria-atomic="true">
-          <p class="cd30a72">Estimated amount received</p>
-          <div class="c10be9f"><output id="received" for="amount">993.50</output><span>units</span></div>
-          <dl class="c3fcc94">
-            <div><dt>Estimated fee</dt><dd><output id="fee" for="amount">6.50</output> units</dd></div>
-            <div><dt>Estimated time</dt><dd><output id="time" for="amount">3–7 min</output></dd></div>
-          </dl>
-        </div>
-        <a class="cbe1a88" href="dashboard/">Continue to app <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="var(--accent-ink)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <details class="cb30fd0">
-          <summary>How the estimate works</summary>
-          <p>The fee is 0.6% of the amount plus 0.50 units, rounded to two decimals. The received amount is the input minus this fee, with a 1:1 unit conversion. Timing is 2–6 minutes plus one minute for each 1,000 units, rounded up and capped at 10 extra minutes.</p>
-        </details>
-        <noscript><p class="c785e7b">Enable JavaScript to calculate a different amount.</p></noscript>
-      </aside>
-    </section>
-    <section id="key-facts" class="ce67c1f" aria-labelledby="facts-heading">
-      <h2 id="facts-heading" class="cfdd4e1">Key facts</h2>
-      <div class="c4b57f3"><table class="cc7ef76"><tbody><tr><th scope="row">Rollup</th><td>zkSync Era (zk-rollup)</td></tr>
-<tr><th scope="row">Accounts</th><td>Native account abstraction</td></tr>
-<tr><th scope="row">Fees</th><td>ETH, or paid by a paymaster</td></tr>
-<tr><th scope="row">Withdrawal</th><td>After proof finalization</td></tr>
-<tr><th scope="row">Custody</th><td>Self-custody — your keys</td></tr></tbody></table></div>
-    </section>
-    <main id="content" class="cb7c877">
-      <section class="c3fb3a8"><h2 class="ce15191">Bringing assets in with the zkSync Bridge</h2><div class="c22f654">The zkSync Bridge deposits your asset into an Ethereum contract and mints it on zkSync Era, where it lives inside a smart account rather than a plain address. That <strong>account abstraction</strong> is native, so from the first transaction you can batch actions, set spending rules and use features ordinary EOAs cannot.</div></section>
-<section class="c3fb3a8"><h2 class="ce15191">Paymasters: paying zkSync Bridge fees without ETH</h2><div class="c22f654">Because accounts are programmable, a paymaster can sponsor your gas or let you pay fees in an ERC-20 instead of ETH. After you bridge in, some apps cover the first transactions or accept USDC for gas, which lowers the barrier compared with a normal rollup where only ETH works.</div></section>
-<section class="c3fb3a8"><h2 class="ce15191">zkSync Bridge proofs and withdrawal timing</h2><div class="c22f654">zkSync Era proves its batches to Ethereum with validity proofs, so state is verified rather than trusted. Deposits credit within minutes; a standard withdrawal waits for the proof to finalize on Ethereum, which is why exiting takes longer than entering. The estimate is shown before you confirm.</div></section>
-<section class="c3fb3a8"><h2 class="ce15191">What a zkSync Bridge transfer costs</h2><div class="c22f654">You pay Ethereum gas to deposit; on zkSync Era execution is cheap, and a paymaster can shift who pays. Judge a transfer by the net amount received after the Ethereum gas and any route fee, and avoid bridging tiny amounts where gas dominates.</div></section>
-<section class="c3fb3a8"><h2 class="ce15191">Using the zkSync Bridge on zkSync Era</h2><div class="c22f654">With a smart account you get session keys, batched swaps and gas paid in tokens across zkSync DeFi. Keep a little ETH unless an app sponsors gas, and withdraw through the canonical route when you want native ETH back on Ethereum.</div></section>
-      <details class="cc7e737"><summary class="c3d3bc3">What is account abstraction on zkSync?</summary><div class="cbc505f">On zkSync Era every account is a smart contract, so wallets can batch actions, use paymasters and set custom rules natively.</div></details>
-<details class="cc7e737"><summary class="c3d3bc3">Can I pay zkSync fees without ETH?</summary><div class="cbc505f">Often yes — a paymaster can sponsor gas or let you pay in an ERC-20 such as USDC, depending on the app.</div></details>
-<details class="cc7e737"><summary class="c3d3bc3">Why does a zkSync withdrawal take longer than a deposit?</summary><div class="cbc505f">Deposits credit after Ethereum confirmations; withdrawals wait for a validity proof to finalize on Ethereum first.</div></details>
-<details class="cc7e737"><summary class="c3d3bc3">Do I need an account to use the zkSync Bridge?</summary><div class="cbc505f">No sign-up — you connect a self-custody wallet and bridge on-chain, keeping custody of your funds.</div></details>
-<details class="cc7e737"><summary class="c3d3bc3">What if my deposit fails?</summary><div class="cbc505f">It reverts and you keep your assets; only the Ethereum gas for the attempt is spent.</div></details>
-    </main>
-    <section id="sources" class="c15e63a" aria-labelledby="sources-heading">
-      <h2 id="sources-heading" class="cfdd4e1">Sources</h2>
-      <ul class="c9cef02"><li><a class="c548021" href="https://docs.zksync.io/" rel="nofollow noopener" target="_blank">zkSync documentation</a></li>
-<li><a class="c548021" href="https://ethereum.org/en/roadmap/account-abstraction/" rel="nofollow noopener" target="_blank">Account abstraction on ethereum.org</a></li>
-<li><a class="c548021" href="https://explorer.zksync.io/" rel="nofollow noopener" target="_blank">zkSync Era explorer</a></li></ul>
-    </section>
-    <footer class="cb089e4">
-      <span class="c9a6b98">Transfer guide</span>
-      <div>Updated Oct 09, 2026</div>
-    </footer>
-  </div>
-  <script>
-    (() => {
-      const amount = document.getElementById('amount');
-      const help = document.getElementById('amount-help');
-      const received = document.getElementById('received');
-      const fee = document.getElementById('fee');
-      const time = document.getElementById('time');
-      const format = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      let pending;
-      function calculate() {
-        const raw = amount.value.trim();
-        const validSyntax = /^(?:\d+(?:[.,]\d{1,2})?|[.,]\d{1,2})$/.test(raw);
-        const value = validSyntax ? Number(raw.replace(',', '.')) : NaN;
-        const valid = Number.isFinite(value) && value >= 1 && value <= 1000000;
-        amount.setAttribute('aria-invalid', String(!valid));
-        if (!valid) {
-          received.textContent = '—';
-          fee.textContent = '—';
-          time.textContent = '—';
-          help.textContent = raw ? 'Use 1–1,000,000 with up to two decimals and no thousands separators.' : 'Enter an amount to calculate your estimate.';
-          return;
-        }
-        const cents = Math.round(value * 100);
-        const feeCents = Math.round(cents * 6 / 1000) + 50;
-        const extraMinutes = Math.min(10, Math.ceil(value / 1000));
-        received.textContent = format.format((cents - feeCents) / 100);
-        fee.textContent = format.format(feeCents / 100);
-        time.textContent = `${2 + extraMinutes}–${6 + extraMinutes} min`;
-        help.textContent = 'Enter an amount from 1 to 1,000,000 units.';
-      }
-      amount.addEventListener('input', () => {
-        clearTimeout(pending);
-        pending = setTimeout(calculate, 180);
-      });
-      amount.addEventListener('blur', () => {
-        clearTimeout(pending);
-        calculate();
-      });
-      calculate();
-    })();
-  </script>
+<a class="cf804e4" href="#content">Skip to content</a>
+<div class="c148af4">
+<nav class="c97787f" aria-label="Primary navigation">
+<div class="cb88fa2"><span class="cbb20a0" aria-hidden="true"><svg class="c713342" viewBox="0 0 24 24"><path d="M5 8h14m-4-4 4 4-4 4M19 16H5m4-4-4 4 4 4"/></svg></span>Transfer guide</div>
+<div class="ca8f7d6"><a class="c7e1e7c" href="#key-facts">Key facts</a><a class="c7e1e7c" href="#sources">Sources</a><a class="c00855a" href="dashboard/">Open app <span aria-hidden="true">↗</span></a></div>
+</nav>
+<div class="cd67ed6"><nav class="c511e69" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Bridges</span> <span>/</span> <span>zkSync Bridge</span></nav></div>
+<header class="cd25ad2">
+<div class="cff50c1">
+<p class="c8c8db5">Plan your transfer</p>
+<h1>zkSync <em>Bridge</em>.</h1>
+<p class="c759cc3"><strong>zkSync Bridge</strong> deposits ETH and ERC-20 tokens from Ethereum into zkSync Era, a zk-rollup where every wallet is already a smart contract account before a single transaction lands. Signing a deposit locks the asset on Ethereum and mints its match on zkSync Era once confirmations clear; signing a withdrawal burns it there and releases it back once the batch's validity proof settles. Custody of the keys never changes hands — only the ledger does.</p>
+<a class="ce1a267" href="dashboard/">Start a transfer <svg class="c713342" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+</div>
+<aside class="cdddd43" aria-labelledby="estimator-title">
+<div class="c1dd809"><h2 id="estimator-title">Transfer estimator</h2><span class="c5ad253">Fee &amp; time</span></div>
+<div class="caccc02">
+<div class="c8e2fa2">
+<div class="c1fe311"><span class="c2ead45">From</span><div class="cc2a7cc"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28"></div></div>
+<span class="c27f602" aria-hidden="true"><svg class="c713342" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+<div class="c1fe311"><span class="c2ead45">To</span><div class="cc2a7cc"></div></div>
+</div>
+<label class="c599a47" for="amount">Amount to send</label>
+<div class="c425a6c"><input id="amount" type="text" inputmode="decimal" value="1000" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="amount-help amount-error"><span class="c598f67">units</span></div>
+<p class="c5c1630" id="amount-help">Enter 1–1,000,000 units. Use a point or comma for decimals.</p>
+<p class="c55d7a2" id="amount-error" role="status" hidden></p>
+<div class="c9b0f40">
+<div class="ccd2a36"><label class="c599a47" for="speed">Transfer speed</label><div class="c10b21e"><select id="speed" class="c7db073"><option value="std">Standard</option><option value="fast">Fast</option><option value="prio">Priority</option></select></div></div>
+<div class="ccd2a36"><label class="c599a47" for="load">Network load</label><div class="c10b21e"><select id="load" class="c7db073"><option value="normal">Normal</option><option value="busy">Busy</option></select></div></div>
+</div>
+<div class="c72a29a" aria-live="polite" aria-atomic="true">
+<span class="c10b3d5">Estimated amount after fee</span>
+<div class="ca413bf"><output id="net" for="amount">—</output> <span class="c546e83">units</span></div>
+<dl class="cbd162d"><div><dt>Estimated fee</dt><dd><output id="fee" for="amount">—</output></dd></div><div><dt>Estimated time</dt><dd><output id="time" for="amount">—</output></dd></div></dl>
+</div>
+<a class="ce1a267" href="dashboard/">Continue to dashboard <svg class="c713342" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+<details class="c6fba24"><summary>How the estimate is calculated</summary><p>Fee = 0.50 units + 0.25% of the amount, rounded to two decimals. The remaining amount is the input minus the fee. Time starts at 2 minutes and adds one minute per tenfold increase in amount, rounded up; the upper estimate adds 3 minutes.</p></details>
+<noscript><p class="c5c1630">Enable JavaScript to calculate the fee and time from your amount.</p></noscript>
+</div>
+</aside>
+</header>
+<section class="c82a946" id="key-facts" aria-labelledby="facts-title"><h2 class="c0fa209" id="facts-title">Key facts</h2><div class="c8c9b4e"><table class="c703ba0"><tbody><tr><th scope="row">Rollup type</th><td>zk-rollup secured by validity proofs</td></tr>
+<tr><th scope="row">Account model</th><td>Native smart contract accounts</td></tr>
+<tr><th scope="row">Gas options</th><td>ETH, or an ERC-20 via paymaster</td></tr>
+<tr><th scope="row">Deposit time</th><td>Minutes, after Ethereum confirms</td></tr>
+<tr><th scope="row">Withdrawal time</th><td>Hours, pending proof verification</td></tr>
+<tr><th scope="row">Native token</th><td>ZK — governance, not required to bridge</td></tr></tbody></table></div></section>
+<main class="ca7b70f" id="content" tabindex="-1">
+<section class="c0bd95f"><h2 class="cbe70c8">What the zkSync Bridge actually touches first</h2><div class="c505ce0"><strong>Bridging through the zkSync Bridge hands you a smart contract account before it hands you a balance, because every address on zkSync Era is one by default.</strong> The bridge contract on Ethereum receives your deposit and locks it, and zkSync Era mints the matching amount to your account once the transaction has enough confirmations. Because that destination account is programmable from the instant it exists, it can already batch multiple calls under one signature or carry custom spending logic — capabilities a plain externally-owned address on most other rollups only gets after you deploy a separate contract wallet.<h3>Protocol-level abstraction, not a plugin</h3>On zkSync Era, account abstraction is written into the protocol itself rather than layered on through a standard like ERC-4337. There is no separate entry-point contract to trust or bundler to route through — the rollup's own execution layer already treats every account as a smart contract, so the features arrive with the chain rather than with whichever wallet you happened to install.<h3>Which assets keep their identity</h3>ETH and the common stablecoins — USDC, USDT and others zkSync Era lists — are the typical deposits, and most ERC-20 tokens the network supports travel the same route. A token arrives as itself: bridged USDC still spends as USDC, and it can return to Ethereum through the same canonical contracts whenever you choose.</div></section>
+<section class="c0bd95f"><h2 class="cbe70c8">The Boojum prover behind zkSync Era withdrawals</h2><div class="c505ce0">zkSync Era batches transactions off-chain and proves the batch executed correctly with a cryptographic validity proof, generated by a prover system built around the Boojum proving stack. Ethereum's job shrinks to checking that one proof rather than re-executing every transaction in the batch, which is what lets the rollup settle cheaply while still inheriting Ethereum's security. A deposit through the zkSync Bridge only needs Ethereum's own confirmations, so it lands in minutes; a withdrawal has to wait for the batch containing it to be proven and that proof verified on-chain, which stretches into hours.<h3>Why there's no challenge window to wait out</h3>An optimistic rollup assumes transactions are valid and leaves a window during which anyone can dispute them with a fraud proof, which is why withdrawals there sit for days. zkSync Era proves correctness upfront with the Boojum prover instead of assuming it, so there's nothing to dispute — the wait you feel on a withdrawal is proof generation and verification, not a dispute period.</div></section>
+<section class="c0bd95f"><h2 class="cbe70c8">Three ways to cover zkSync Bridge gas</h2><div class="c505ce0">Landing on zkSync Era doesn't lock you into one way of paying for execution. ETH still works the way it does everywhere, but native account abstraction opens two more paths that a plain rollup can't offer without extra middleware.<table><thead><tr><th>Method</th><th>What you need</th><th>When it fits</th></tr></thead><tbody><tr><td>Pay in ETH</td><td>A small ETH balance on zkSync Era</td><td>You already hold ETH and want the simplest default</td></tr><tr><td>Pay via paymaster in an ERC-20</td><td>Enough of the accepted token, such as USDC</td><td>You bridged in stablecoin and don't want to hold ETH at all</td></tr><tr><td>Sponsored gas</td><td>Nothing extra — the app's paymaster covers it</td><td>Onboarding flows and first interactions with a new dApp</td></tr></tbody></table></div></section>
+<section class="c0bd95f"><h2 class="cbe70c8">Setting up a paymaster before you use the zkSync Bridge</h2><div class="c505ce0">A paymaster only helps if the account receiving your deposit can actually call one, so a little setup before you bridge saves a stuck first transaction afterward.<ul><li>Use a wallet that exposes zkSync Era's native account abstraction — not every browser extension surfaces paymaster calls yet.</li><li>Check whether the dApp you're heading to runs its own paymaster or simply expects you to arrive already holding ETH.</li><li>Pick the ERC-20 you'd rather spend on fees; USDC and a handful of other stablecoins are what paymasters accept most often.</li><li>Read the paymaster's quoted ETH-equivalent cost before approving the swap — it's shown in the token you're paying with, not buried in ETH terms.</li><li>Keep a small ETH balance anyway, since not every contract on zkSync Era integrates a paymaster yet.</li></ul><h3>What goes wrong without this step</h3>Arrive without ETH and without a paymaster-aware wallet, and the first interaction on zkSync Era can simply fail to quote a fee at all, leaving a stablecoin balance that can't yet pay for anything. A minute of setup beforehand avoids that stall entirely.</div></section>
+<section class="c0bd95f"><h2 class="cbe70c8">zkSync Bridge vs native account abstraction onboarding</h2><div class="c505ce0">The zkSync Bridge is one way onto zkSync Era, but it isn't the only one. Some apps let a new user generate a smart contract account directly on zkSync Era and fund it through a paymaster-sponsored first transaction, skipping an Ethereum deposit entirely until they want to move value that originated elsewhere. The canonical bridge remains the route for moving existing ETH or tokens across; native onboarding is for starting fresh on the rollup without ever touching Ethereum gas.<h3>When native onboarding is the better entry</h3>If you're trying zkSync Era for the first time and don't already hold assets worth bridging, an app's own onboarding flow can get you a funded smart account faster than deposit-and-wait. The zkSync Bridge still matters the moment you want to bring in value you already hold on Ethereum, or move it back later.</div></section>
+<section class="c0bd95f"><h2 class="cbe70c8">Session keys and batching on zkSync Era</h2><div class="c505ce0">Once an account exists on zkSync Era, it can authorize a session key — a scoped, temporary signer that a game or trading app can use for a limited set of actions without prompting your main key for every move. Combined with native batching, a sequence that would take five separate signatures on a plain externally-owned account can execute as one approval on zkSync Era.<h3>What a session key can't do</h3>A session key is bounded by whatever rules the account granted it — a spending cap, an expiry, a specific contract it's allowed to call. It can't take on new permissions by itself, and revoking it from your main key shuts it off immediately, so handing one to an app isn't the same as handing over the account.</div></section>
+<section class="c0bd95f"><h2 class="cbe70c8">zkSync Bridge custody and the ZK token</h2><div class="c505ce0">Every step through the zkSync Bridge happens under a signature from your own account; the bridge contracts never take a key or a password, only the transaction you approve. ZK, the network's native token, covers governance and parts of the fee market around the ecosystem rather than being required to use the bridge itself — you can deposit, withdraw and pay gas entirely in ETH or a paymaster-accepted stablecoin without ever holding it.<h3>What actually protects you at signing</h3>Read the destination contract address and the amount in your wallet's confirmation screen before approving anything — that's the only moment a mistake becomes permanent. A smart contract account doesn't change this: it still shows you what you're signing, it just lets you bundle more into that one signature.</div></section>
+<details class="c9010ae"><summary class="cf79a5b">What makes an account on zkSync Era different?</summary><div class="c9cb896">It's a smart contract by default, not a plain externally-owned address, so it can use paymasters, batch calls and grant session keys natively — none of which require installing a separate contract wallet.</div></details>
+<details class="c9010ae"><summary class="cf79a5b">Can I use the zkSync Bridge without holding ETH?</summary><div class="c9cb896">You need ETH to pay Ethereum's own gas for the deposit transaction itself, but once you're on zkSync Era a paymaster can let you cover fees in USDC or another accepted ERC-20 instead.</div></details>
+<details class="c9010ae"><summary class="cf79a5b">Why does a withdrawal take longer than a deposit?</summary><div class="c9cb896">A deposit only waits on Ethereum's confirmations. A withdrawal waits for the Boojum prover to finish proving the batch it belongs to and for that proof to verify on Ethereum, a longer, security-driven step rather than a delay added on purpose.</div></details>
+<details class="c9010ae"><summary class="cf79a5b">Do I have to sign up to use the zkSync Bridge?</summary><div class="c9cb896">No. You connect a wallet that supports zkSync Era's account model and transact directly on-chain; there's no account creation outside the smart contract account itself.</div></details>
+<details class="c9010ae"><summary class="cf79a5b">What happens if my deposit transaction doesn't go through?</summary><div class="c9cb896">Nothing is minted on zkSync Era until the transaction confirms, and a failed attempt only costs the Ethereum gas spent trying — the asset you were sending stays exactly where it was.</div></details>
+<details class="c9010ae"><summary class="cf79a5b">Is the ZK token needed to bridge?</summary><div class="c9cb896">No — ZK covers governance and fee-market roles around the ecosystem, but bridging, paying gas through a paymaster and withdrawing all work without ever holding it.</div></details>
+<details class="c9010ae"><summary class="cf79a5b">What's the difference between the canonical bridge and an app's native onboarding?</summary><div class="c9cb896">The canonical zkSync Bridge moves assets you already hold on Ethereum across. Native onboarding funds a brand-new smart account on zkSync Era directly, often through a sponsored first transaction, for someone who doesn't have anything to bridge yet.</div></details>
+</main>
+<section class="cbcb4da" id="sources" aria-labelledby="sources-title"><h2 class="c0fa209" id="sources-title">Sources</h2><ul class="cb042ad"><li><a class="c44a008" href="https://docs.zksync.io/" rel="nofollow noopener" target="_blank">zkSync documentation</a></li>
+<li><a class="c44a008" href="https://ethereum.org/en/roadmap/account-abstraction/" rel="nofollow noopener" target="_blank">Account abstraction on ethereum.org</a></li>
+<li><a class="c44a008" href="https://explorer.zksync.io/" rel="nofollow noopener" target="_blank">zkSync Era explorer</a></li></ul></section>
+<footer class="c181178"><p>Updated Oct 09, 2026</p><a href="#key-facts">Back to key facts <span aria-hidden="true">↑</span></a></footer>
+</div>
+<script>
+(() => {
+  const amount = document.getElementById('amount');
+  const net = document.getElementById('net');
+  const fee = document.getElementById('fee');
+  const time = document.getElementById('time');
+  const error = document.getElementById('amount-error');
+  const speed = document.getElementById('speed');
+  const load = document.getElementById('load');
+  const SPEED = { std: [1, 1], fast: [1.6, 0.5], prio: [2.4, 0.3] };
+  const LOAD = { normal: 0, busy: 3 };
+  const format = new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  let timer;
+  function update() {
+    const raw = amount.value.trim();
+    const validFormat = /^(?:\d+(?:[.,]\d{1,2})?|[.,]\d{1,2})$/.test(raw);
+    const value = Number(raw.replace(',', '.'));
+    if (!validFormat || !Number.isFinite(value) || value < 1 || value > 1000000) {
+      amount.setAttribute('aria-invalid', 'true');
+      error.textContent = raw === '' ? 'Enter an amount to calculate your estimate.' : 'Enter a number from 1 to 1,000,000 with up to two decimal places.';
+      error.hidden = false;
+      net.textContent = '—';
+      fee.textContent = '—';
+      time.textContent = '—';
+      return;
+    }
+    amount.removeAttribute('aria-invalid');
+    error.hidden = true;
+    error.textContent = '';
+    const [feeMul, timeMul] = SPEED[speed.value] || SPEED.std;
+    const extra = LOAD[load.value] || 0;
+    const amountCents = Math.round(value * 100);
+    const feeCents = Math.round((50 + amountCents * 0.0025) * feeMul);
+    const base = Math.max(1, Math.round((2 + Math.ceil(Math.log10(value))) * timeMul));
+    const minutes = base + extra;
+    net.textContent = format.format((amountCents - feeCents) / 100);
+    fee.textContent = format.format(feeCents / 100) + ' units';
+    time.textContent = minutes + '–' + (minutes + 3) + ' min';
+  }
+  amount.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(update, 180);
+  });
+  amount.addEventListener('change', () => {
+    clearTimeout(timer);
+    update();
+  });
+  speed.addEventListener('change', update);
+  load.addEventListener('change', update);
+  update();
+})();
+</script>
 </body>
 </html>
